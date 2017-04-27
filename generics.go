@@ -2,8 +2,14 @@ package main
 
 import (
 	"fmt"
-	"generics/alg"
+
+	"github.com/trainchou/generics/alg"
 )
+
+type student struct {
+	id   string
+	name string
+}
 
 func intSliceExec() {
 	fmt.Printf("int slice start")
@@ -45,8 +51,34 @@ func stringSliceExec() {
 	fmt.Println("string slice end")
 }
 
+func structSliceExec() {
+	fmt.Printf("struct slice start")
+	xiaoMing := student{"1001", "xiao ming"}
+	xiaoLei := student{"1002", "xiao lei"}
+	xiaoFang := student{"1003", "xiao fang"}
+	slice := alg.NewSlice()
+	slice.Add(xiaoMing)
+	fmt.Println("current struct slice:", slice)
+	slice.Add(xiaoLei)
+	fmt.Println("current struct slice:", slice)
+	slice.Add(xiaoLei)
+	fmt.Println("current struct slice:", slice)
+	slice.Add(xiaoFang)
+	fmt.Println("current struct slice:", slice)
+	slice.Remove(xiaoLei)
+	fmt.Println("current struct slice:", slice)
+	slice.Remove(xiaoLei)
+	fmt.Println("current struct slice:", slice)
+	slice.Remove(xiaoFang)
+	fmt.Println("current struct slice:", slice)
+	fmt.Println("struct slice end")
+}
+
 func main() {
 	intSliceExec()
 	fmt.Println("")
 	stringSliceExec()
+	fmt.Println("")
+	structSliceExec()
+	fmt.Println("")
 }
